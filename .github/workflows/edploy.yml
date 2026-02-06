@@ -18,10 +18,10 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
       - name: Generate Build Number
-        run:
+        run: |
           BUILD_NUMBER=$(date +'%d%m%Y%H%M%S')
           echo "BUILD_NUMBER=$BUILD_NUMBER" >> $GITHUB_ENV
-          echo "Generated Build number:$BUILD_NUMBER"
+          echo "Generated Build number: $BUILD_NUMBER"
       - name: MAven clean verify
         run: mvn -B -ntp clean verify jib:build \
           -Ddocker.image.tag=12345
